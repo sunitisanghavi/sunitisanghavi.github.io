@@ -1,0 +1,31 @@
+/*-- scss:defaults --*/
+
+// Palette: deep night sky, starlight amber, Rayleigh blue, polarization teal
+$ink:        #0d1b2a;
+$night:      #0b1626;
+$amber:      #f2a541;
+$rayleigh:   #3a7bd5;
+$teal:       #2bb3a3;
+$paper:      #fbfaf7;
+
+$body-bg:    $paper;
+$body-color: #1f2933;
+$primary:    $rayleigh;
+$link-color: $rayleigh;
+
+$font-family-sans-serif: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+$headings-font-family:   "Source Serif 4", Georgia, serif;
+$headings-font-weight:   600;
+$font-size-root:         17px;
+
+$navbar-bg:        $night;
+$navbar-fg:        #d9e2ec;
+$navbar-hl:        $amber;
+$footer-bg:        $paper;
+
+/*-- scss:rules --*/
+
+h1, h2, h3 { letter-spacing: -0.01em; color: $ink; }
+h2 { margin-top: 2.2rem; border-bottom: none; }
+
+.navbar-title { font-family: $headings-font-family; font-weight: 600; letter-spacing: 0.01em; }

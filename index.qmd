@@ -1,0 +1,155 @@
+---
+title: ""
+page-layout: full
+title-block-banner: false
+pagetitle: "Suniti Sanghavi — Polarized radiative transfer, from Earth to exoplanets"
+---
+
+
+```{=html}
+<section class="banner column-screen">
+ <div class="banner-inner">
+  <div class="banner-text">
+    <div class="banner-name">Suniti Sanghavi</div>
+    <div class="banner-tagline">Polarized radiative transfer and remote sensing of planetary atmospheres</div>
+    <div class="banner-caption">Reflected starlight from an orbiting planet: brightness and
+      degree of polarization depend on the phase angle α between star, planet and observer.
+      Click the diagram to pause.</div>
+  </div>
+
+  <svg id="orbit" viewBox="0 0 540 360" role="img" aria-labelledby="hero-title hero-desc">
+    <title id="hero-title">A planet orbiting its star, seen by a distant observer</title>
+    <desc id="hero-desc">Top view of a planet orbiting a star. The observer is far below the diagram.
+      The phase angle is the star–planet–observer angle; insets show the planet as the observer sees it
+      and how brightness and degree of polarization change with phase angle.</desc>
+    <defs>
+      <radialGradient id="starGlow">
+        <stop offset="0" stop-color="#fff6dc"/>
+        <stop offset=".25" stop-color="#f2a541"/>
+        <stop offset="1" stop-color="#f2a541" stop-opacity="0"/>
+      </radialGradient>
+      <marker id="tipA" viewBox="0 0 6 6" refX="3" refY="3" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+        <path d="M0,0 L6,3 L0,6 z" fill="#f2a541"/>
+      </marker>
+      <marker id="tipT" viewBox="0 0 6 6" refX="3" refY="3" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+        <path d="M0,0 L6,3 L0,6 z" fill="#2bb3a3"/>
+      </marker>
+    </defs>
+
+    <g><circle cx="168" cy="31" r="1.1" fill="#fff" opacity="0.27"/><circle cx="427" cy="22" r="1.1" fill="#fff" opacity="0.28"/><circle cx="264" cy="13" r="0.8" fill="#fff" opacity="0.44"/><circle cx="64" cy="56" r="1.1" fill="#fff" opacity="0.51"/><circle cx="24" cy="242" r="0.8" fill="#fff" opacity="0.44"/><circle cx="31" cy="182" r="1.1" fill="#fff" opacity="0.28"/><circle cx="352" cy="294" r="0.8" fill="#fff" opacity="0.38"/><circle cx="500" cy="16" r="1.1" fill="#fff" opacity="0.51"/><circle cx="335" cy="160" r="1.1" fill="#fff" opacity="0.41"/><circle cx="231" cy="61" r="1.1" fill="#fff" opacity="0.28"/><circle cx="12" cy="20" r="0.8" fill="#fff" opacity="0.31"/><circle cx="118" cy="306" r="1.1" fill="#fff" opacity="0.39"/><circle cx="65" cy="292" r="1.1" fill="#fff" opacity="0.54"/><circle cx="530" cy="190" r="0.8" fill="#fff" opacity="0.53"/><circle cx="300" cy="40" r="0.8" fill="#fff" opacity="0.32"/></g>
+
+    <!-- orbit (top view) -->
+    <ellipse cx="170" cy="140" rx="135" ry="62" fill="none" stroke="#3c5470" stroke-width="1" stroke-dasharray="2 5"/>
+
+    <g id="behind"></g>
+    <circle class="twinkle" cx="170" cy="140" r="40" fill="url(#starGlow)"/>
+    <circle cx="170" cy="140" r="10" fill="#fff6dc"/>
+    <g id="front">
+      <g id="planet-group">
+        <line id="ray-in"  class="ray" stroke="#f2a541" stroke-width="1.4" opacity=".8"/>
+        <line id="ray-out" class="ray" stroke="#2bb3a3" stroke-width="1.4" opacity=".9" marker-end="url(#tipT)"/>
+        <path id="alpha-arc" fill="none" stroke="#e6edf3" stroke-width="1" opacity=".8"/>
+        <text id="alpha-lbl" fill="#e6edf3" font-size="12" font-style="italic" font-family="Source Serif 4, serif">α</text>
+        <g id="planet">
+          <circle r="11" fill="#13243b" stroke="#3a7bd5" stroke-width=".6"/>
+          <path id="planet-day" fill="#6fa4f0"/>
+        </g>
+      </g>
+    </g>
+
+    <!-- observer -->
+    <g font-family="Inter, sans-serif" font-size="10" fill="#7fd6cb" text-anchor="middle">
+      <path d="M148,312 Q170,296 192,312 Q170,328 148,312 Z" fill="none" stroke="#2bb3a3" stroke-width="1.6"/>
+      <circle cx="170" cy="312" r="5" fill="#2bb3a3"/>
+      <text x="170" y="340">observer (e.g. HWO) — far away in this direction</text>
+    </g>
+
+    <!-- what the observer sees -->
+    <g font-family="Inter, sans-serif" font-size="9" fill="#9fb3c8">
+      <rect x="352" y="22" width="176" height="128" rx="8" fill="#0b1626" opacity=".55" stroke="#2a3e57"/>
+      <text x="362" y="38">what the observer sees</text>
+      <g transform="translate(420,90)">
+        <circle r="30" fill="#13243b" stroke="#2a3e57"/>
+        <path id="view-day" fill="#6fa4f0"/>
+      </g>
+      <line id="pol-vec" x1="478" x2="478" stroke="#2bb3a3" stroke-width="2" marker-start="url(#tipT)" marker-end="url(#tipT)"/>
+      <text x="478" y="140" text-anchor="middle" fill="#7fd6cb">polarization</text>
+      <text id="phase-read" x="362" y="140" fill="#e6edf3"></text>
+    </g>
+
+    <!-- brightness & polarization vs phase angle -->
+    <g transform="translate(362,182)" font-family="Inter, sans-serif" font-size="9" fill="#9fb3c8">
+      <rect x="-10" y="-14" width="176" height="114" rx="8" fill="#0b1626" opacity=".55" stroke="#2a3e57"/>
+      <line x1="0" y1="70" x2="156" y2="70" stroke="#3c5470"/>
+      <polyline fill="none" stroke="#f2a541" stroke-width="1.6"
+        points="0.0,8.0 5.2,8.3 10.4,9.3 15.6,10.8 20.8,12.9 26.0,15.4 31.2,18.3 36.4,21.5 41.6,24.9 46.8,28.5 52.0,32.2 57.2,36.0 62.4,39.7 67.6,43.4 72.8,46.9 78.0,50.3 83.2,53.4 88.4,56.3 93.6,58.9 98.8,61.2 104.0,63.2 109.2,65.0 114.4,66.4 119.6,67.5 124.8,68.4 130.0,69.1 135.2,69.5 140.4,69.8 145.6,69.9 150.8,70.0 156.0,70.0"/>
+      <polyline fill="none" stroke="#2bb3a3" stroke-width="1.6"
+        points="0.0,70.0 5.2,69.7 10.4,68.6 15.6,66.9 20.8,64.4 26.0,61.1 31.2,57.1 36.4,52.1 41.6,46.3 46.8,39.8 52.0,32.8 57.2,25.6 62.4,18.8 67.6,13.1 72.8,9.3 78.0,8.0 83.2,9.3 88.4,13.1 93.6,18.8 98.8,25.6 104.0,32.8 109.2,39.8 114.4,46.3 119.6,52.1 124.8,57.1 130.0,61.1 135.2,64.4 140.4,66.9 145.6,68.6 150.8,69.7 156.0,70.0"/>
+      <line id="cur-line" y1="0" y2="70" stroke="#e6edf3" stroke-width=".8" stroke-dasharray="2 2"/>
+      <circle id="cur-b" r="3.5" fill="#f2a541"/>
+      <circle id="cur-p" r="3.5" fill="#2bb3a3"/>
+      <text x="0" y="-2" fill="#f2a541">brightness</text>
+      <text x="54" y="-2" fill="#2bb3a3">polarization</text>
+      <text x="0" y="83">0° full</text><text x="78" y="83" text-anchor="middle">phase angle α</text><text x="156" y="83" text-anchor="end">180° new</text>
+      <text x="0" y="96" font-size="8" fill="#6b7f95">schematic: Lambert sphere, Rayleigh scattering</text>
+    </g>
+  </svg>
+ </div>
+</section>
+<script src="assets/js/orbit.js"></script>
+
+<section class="profile column-page">
+  <img class="profile-photo" src="assets/img/portrait.jpg" alt="Portrait of Suniti Sanghavi">
+  <div class="profile-body">
+    <h2 class="profile-name">About</h2>
+    <div class="profile-role">Data Scientist, Science Data Modeling &amp; Computing Group<br>
+      NASA Jet Propulsion Laboratory, California Institute of Technology</div>
+    <p>
+      I work on the theory and numerical methods of polarized radiative transfer and their
+      application to remote sensing of planetary atmospheres: retrievals of aerosols, clouds,
+      greenhouse gases and solar-induced fluorescence from Earth-observing satellites, the
+      effects of rotational and vibrational Raman scattering, and spectropolarimetric modeling
+      of brown dwarfs and directly imaged exoplanets. I lead the scientific development of
+      vSmartMOM, a linearized vector radiative transfer code, and am the radiative transfer
+      lead of the Carbon-I mission concept team.
+    </p>
+    <p class="profile-edu">Ph.D. and Diploma in Physics, Heidelberg University · B.Sc. in Physics, University of Mumbai</p>
+    <div class="profile-links">
+      <a href="research.html">Research</a>
+      <a href="publications.html">Publications</a>
+      <a href="software.html">Software</a>
+      <a href="cv.html">CV</a>
+      <a href="https://scholar.google.com/citations?user=fKACl6kAAAAJ">Google Scholar</a>
+      <a href="https://github.com/RemoteSensingTools/vSmartMOM.jl">GitHub</a>
+    </div>
+  </div>
+</section>
+```
+
+::: {.home-section .column-page}
+## Key research areas
+
+{{< include _areas.qmd >}}
+:::
+
+::: {.home-section .column-page}
+## Recent news
+
+```{=html}
+<ul class="news">
+  <li><span class="date">Aug 2026</span>
+    New preprint: <a href="https://arxiv.org/abs/2608.06649"><em>Multi-epoch ultraviolet observables for breaking the
+    radius–albedo degeneracy in directly imaged exoplanets</em></a> (Sanghavi, West &amp; Chen) — a path to
+    planetary radii from HWO reflected-light detections.</li>
+  <li><span class="date">2026</span>
+    <a href="https://doi.org/10.1016/j.jqsrt.2026.110077">Isolating Cabannes and rotational Raman scattering</a>
+    published in <em>JQSRT</em>.</li>
+  <li><span class="date">2025</span>
+    Two GRL papers: <a href="https://doi.org/10.1029/2024gl112777">Raman scattering biases in satellite SIF</a> and
+    <a href="https://doi.org/10.1029/2024gl114131">N<sub>2</sub>O as a light-path proxy</a> for greenhouse-gas retrievals.</li>
+  <li><span class="date">2022</span>
+    <a href="https://doi.org/10.21105/joss.04575"><code>vSmartMOM.jl</code></a> released in the
+    <em>Journal of Open Source Software</em>.</li>
+</ul>
+```
+:::

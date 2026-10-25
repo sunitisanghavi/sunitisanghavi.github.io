@@ -1,0 +1,218 @@
+---
+title: "Research"
+subtitle: "Polarized radiative transfer and remote sensing of planetary atmospheres"
+---
+
+My research concerns the theory and numerical solution of the vector radiative transfer
+equation and its use in retrieving atmospheric and surface properties from spectrally
+resolved, polarized measurements of scattered light. Applications include retrievals of
+aerosols, clouds, trace gases and solar-induced fluorescence from Earth-observing
+satellites, and the interpretation of thermal emission from brown dwarfs and reflected
+light from directly imaged exoplanets. Polarization and inelastic (Raman) scattering are
+treated explicitly rather than approximated: both carry information not contained in the
+scalar intensity, and both bias retrievals when neglected.
+
+```{=html}
+<svg viewBox="0 0 760 250" role="img" aria-label="Research structure: radiative transfer theory and high-performance software form the foundation for Earth's atmosphere and planets beyond Earth" style="width:100%;height:auto;margin:1rem 0 1.5rem">
+  <defs>
+    <marker id="arr" viewBox="0 0 8 8" refX="4" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L8,4 L0,8 z" fill="#5b6b7b"/>
+    </marker>
+  </defs>
+  <g font-family="Inter, sans-serif" text-anchor="middle">
+    <!-- applications -->
+    <a href="#earth">
+      <rect x="40" y="20" width="300" height="86" rx="14" fill="#fff" stroke="#4f8a5b" stroke-width="2"/>
+      <text x="190" y="54" font-size="17" font-weight="600" fill="#0d1b2a" font-family="Source Serif 4, serif">3 · Earth's atmosphere</text>
+      <text x="190" y="80" font-size="12" fill="#5b6b7b">aerosols · clouds · CO₂ / CH₄ · SIF</text>
+    </a>
+    <a href="#planets">
+      <rect x="420" y="20" width="300" height="86" rx="14" fill="#fff" stroke="#f2a541" stroke-width="2"/>
+      <text x="570" y="54" font-size="17" font-weight="600" fill="#0d1b2a" font-family="Source Serif 4, serif">4 · Planets beyond Earth</text>
+      <text x="570" y="80" font-size="12" fill="#5b6b7b">brown dwarfs · exoplanets · HWO</text>
+    </a>
+    <line x1="344" y1="63" x2="416" y2="63" stroke="#5b6b7b" stroke-width="1.5" marker-start="url(#arr)" marker-end="url(#arr)"/>
+    <text x="380" y="52" font-size="10" fill="#5b6b7b">Earth as</text>
+    <text x="380" y="80" font-size="10" fill="#5b6b7b">benchmark</text>
+    <!-- supports -->
+    <g stroke="#c9c4b6" stroke-width="2">
+      <line x1="120" y1="106" x2="120" y2="140"/><line x1="260" y1="106" x2="260" y2="140"/>
+      <line x1="500" y1="106" x2="500" y2="140"/><line x1="640" y1="106" x2="640" y2="140"/>
+    </g>
+    <!-- foundations -->
+    <a href="#theory">
+      <rect x="40" y="140" width="330" height="90" rx="14" fill="#0b1626"/>
+      <rect x="40" y="140" width="330" height="5" rx="2" fill="#3a7bd5"/>
+      <text x="205" y="178" font-size="17" font-weight="600" fill="#fff" font-family="Source Serif 4, serif">1 · Radiative transfer theory</text>
+      <text x="205" y="204" font-size="12" fill="#9fb3c8">vector RT · linearization · Mie · Raman · 3D</text>
+    </a>
+    <a href="#software">
+      <rect x="390" y="140" width="330" height="90" rx="14" fill="#0b1626"/>
+      <rect x="390" y="140" width="330" height="5" rx="2" fill="#2bb3a3"/>
+      <text x="555" y="178" font-size="17" font-weight="600" fill="#fff" font-family="Source Serif 4, serif">2 · High-performance software</text>
+      <text x="555" y="204" font-size="12" fill="#9fb3c8">vSmartMOM.jl · Julia · CPU / GPU</text>
+    </a>
+  </g>
+</svg>
+```
+
+## 1 · Fundamentals of radiative transfer theory {#theory}
+
+**Vector radiative transfer and its derivatives.** My PhD work aimed at retrieving aerosol
+properties from satellite spectra by optimal estimation. This required radiative transfer
+models that treat aerosol scattering in full detail and provide derivatives with respect to
+aerosol parameters, which were not readily available at the time. I developed the vector
+matrix-operator method **vSmartMOM**, linearized analytically with respect to aerosol and
+surface properties ([Sanghavi, Davis & Eldering 2014](https://doi.org/10.1016/j.jqsrt.2013.09.004);
+scalar precursor [2013](https://doi.org/10.1016/j.jqsrt.2012.10.021)), and extended δ-m and
+δ-fit truncation to polarized radiative transfer
+([Sanghavi & Stephens 2015](https://doi.org/10.1016/j.jqsrt.2015.03.007)).
+
+**Fourier moments of Mie scattering matrices.** Radiative transfer codes need the expansion
+of the aerosol phase matrix in generalized spherical functions. The usual route computes the
+phase matrix of a size distribution on an angular grid and then integrates it numerically
+to obtain the expansion coefficients. Domke (1975) proposed going directly from the
+scattering amplitudes to the coefficients using Wigner 3-j symbols, which skips the
+intermediate phase matrix. However, the main recurrence relation in his paper was misprinted,
+and the method was considered impractical for size parameters above about 120. I corrected
+the recurrence and implemented the method with precomputed 3-j tabulations. Its accuracy is
+limited only by machine precision; it reproduces the conventional route and is at least 6–8
+times faster for polydispersions over size parameters from 0 to beyond 900
+([Sanghavi 2014](https://doi.org/10.1016/j.jqsrt.2013.12.015)).
+
+**Raman scattering from first principles.** Rayleigh scattering is not purely elastic: a few
+percent of molecular scattering is rotational (and vibrational) Raman scattering, which
+shifts photons in wavelength and fills in solar Fraunhofer and telluric absorption lines. I
+derived the Cabannes and Raman optical properties of N₂ and O₂
+([Part I, 2022](https://doi.org/10.1016/j.jqsrt.2022.108328)), built them into a fully
+polarized, multiple-scattering framework
+([Part II, 2023](https://doi.org/10.1016/j.jqsrt.2023.108791)), and quantified the
+forward-model error of treating Rayleigh scattering as elastic
+([2026](https://doi.org/10.1016/j.jqsrt.2026.110077)).
+
+**Coupled surface–atmosphere radiative transfer.** Instead of describing vegetation by a
+simple BRDF, vSmartMOM now treats the canopy as a scattering medium fully coupled to the
+atmosphere (including the air within the canopy). The canopy is defined by leaf optical
+properties and leaf angular distributions, with the soil as the lower boundary condition.
+This links canopy structure and leaf physiology directly to top-of-atmosphere radiances,
+polarization and SIF. The coupled model took part in [RAMI4ATM](https://rami-benchmark.jrc.ec.europa.eu/_www/RAMI4ATM.php), the European
+Commission Joint Research Centre's first intercomparison of coupled surface–atmosphere
+radiative transfer models (paper in preparation). An analogous fully coupled
+ocean–atmosphere treatment is in development.
+
+**3D polarized transfer for oblate, inhomogeneous bodies.** A semi-analytic, conics-based
+scheme computes disk-resolved and disk-integrated Stokes vectors for rapidly rotating,
+oblate brown dwarfs and giant planets. The body is treated as an ellipsoid, and horizontal
+structure such as patchy clouds and gravity darkening is included pixel by pixel across the
+disk ([Sanghavi & Shporer 2018](https://doi.org/10.3847/1538-4357/aadf94)), later
+extended to reflected starlight ([2021](https://doi.org/10.3847/1538-4357/abcd99)).
+
+## 2 · High-performance radiative transfer software {#software}
+
+Retrievals from hyperspectral and multi-angle polarimetric instruments require forward
+models that are both accurate and computationally efficient. I developed vSmartMOM, originally
+written in Fortran and C++ ([Sanghavi, Davis & Eldering 2014](https://doi.org/10.1016/j.jqsrt.2013.09.004)).
+Since 2020 it has been rebuilt as the open-source Julia package [`vSmartMOM.jl`](software.qmd)
+— begun with Christian Frankenberg and Schmidt Software Fellow Rupesh Jeyaram
+([JOSS 2022](https://doi.org/10.21105/joss.04575)). Companion packages provide molecular
+absorption (HITRAN, ExoMol), canopy, ocean and exoplanet optical properties. I lead its
+scientific development. The code runs on CPUs and GPUs and is used for Earth-observation
+studies (SIF and greenhouse-gas retrieval biases, Carbon-I) and for the GPU-accelerated
+HWO radius–albedo simulations described below.
+See the [software page](software.qmd) for milestones.
+
+## 3 · Planetary atmospheres: Earth {#earth}
+
+From MAX-DOAS and SCIAMACHY aerosol and cloud retrievals, through MISR multi-angle aerosol
+inversions, to information-content and error analyses for OCO-2/3 and GOSAT
+([Sanghavi et al. 2020](https://doi.org/10.1016/j.rse.2020.112053)), my Earth-science work
+addresses the effect of aerosol and cloud scattering on trace-gas retrievals from space and
+methods to reduce the resulting errors, e.g. polarimetric O₂ A-band cloud sensing
+([2015](https://doi.org/10.5194/amt-8-3601-2015)) or N₂O as a light-path proxy
+([Frankenberg et al. 2025](https://doi.org/10.1029/2024gl114131)).
+
+**Raman scattering and solar-induced fluorescence.** Inelastic scattering produces
+spurious SIF of up to 0.35 W m⁻² sr⁻¹ µm⁻¹ over vegetation-free regions, and existing
+zero-level offsets leave residual biases correlated with surface brightness, elevation and
+geometry. We introduced a lookup-table correction, based on radiative transfer simulations, that
+estimates and subtracts the inelastic contribution
+([Sanghavi et al. 2025, GRL](https://doi.org/10.1029/2024gl112777)).
+
+**Mission leadership: Carbon-I.** I am the radiative transfer lead of the Carbon-I team, a
+NASA Earth System Explorer mission concept for imaging the carbon cycle from space, bringing
+the polarized, inelastic radiative transfer described above into the mission's forward
+modeling.
+
+## 4 · Planets beyond Earth {#planets}
+
+::::: {.rblock .column-page}
+
+:::: {.rblock-text}
+**Breaking the radius–albedo degeneracy for the Habitable Worlds Observatory.**
+Direct imaging measures how bright a planet appears in reflected starlight, but brightness
+alone cannot tell whether a planet is large and dark or small and bright. For non-transiting
+planets — including HWO's prime targets — this degeneracy limits
+characterization. In [Sanghavi, West & Chen (2026)](https://arxiv.org/abs/2608.06649) we
+construct *radius-free* ultraviolet observables from multi-epoch observations — the
+normalized 400 nm lightcurve shape, UV intensity and polarization colors, and the degree of
+linear polarization. Ratios cancel the radius. The approach uses the 360–400 nm window, where
+Rayleigh scattering is strong, molecular absorption is weak and bright surfaces such as snow
+or clouds are nearly colorless, so the atmosphere and surface can be described by few
+parameters. The observables then constrain the atmospheric column, the surface reflectivity
+and, if unknown, the orbital phases *before* the radius is inferred.
+
+For a six-phase sequence, spectropolarimetry gives median radius errors of 9.5 %, 3.3 % and
+0.45 % at S/N = 5, 20 and 100 with known phases, and 14 %, 3.2 % and 0.47 % with unknown
+phases. Removing polarimetry degrades these results, especially when the inner working angle
+restricts phase coverage. For solar-twin systems at 6 and 12 pc, the required six-phase
+campaigns take a few hundred hours of observing time. The study is a proof of concept; mass
+constraints from astrometry and radial velocities offer a complementary route to the radius.
+::::
+
+:::: {.rblock-fig}
+{{< include _degeneracy.qmd >}}
+::::
+
+:::::
+
+::: {.plain-box}
+**In plain terms.** Picture the Moon moved so far away that it is a single point of light,
+smaller than one pixel of a camera. We can watch it brighten and dim as it goes around its
+star, but brightness alone cannot tell us whether we see a large, dark planet or a small,
+bright one. What we can measure is how its light changes with color and with polarization at
+several points along the orbit. In near-ultraviolet light the atmosphere and surface of a
+rocky planet behave simply, so comparing these measurements tells us how reflective the
+planet is, independently of its size. Once that is known, the brightness gives the size.
+:::
+
+**Polarization of brown dwarfs.** Brown dwarfs are observed in their own thermal emission,
+mainly in the near infrared, and polarized emission has been observed from several of them. Thermal emission
+from a spherically symmetric body has no net polarization, so the signal requires an
+anisotropy: rotational flattening, patchy clouds, bands or other structure. Modeling these
+effects together in a single body was the motivation for the oblate 3D framework above. It
+shows that polarization grows with oblateness and inclination, that gravity darkening can
+amplify it considerably, and that large cloud grains depolarize
+([Sanghavi & Shporer 2018](https://doi.org/10.3847/1538-4357/aadf94)). A polarized signal
+therefore does not by itself indicate clouds. It is more informative about rotational
+deformation, spin orientation and latitudinal structure.
+
+**Spectropolarimetry of brown dwarfs.** Coupling the 3D conics framework to
+molecular opacities gives J, H, K spectropolarimetric simulations as a function of internal
+energy, surface gravity, grain size and cloud depth. T-dwarf spectra are fit more easily with
+cloudless atmospheres or high clouds, whereas L-dwarf spectra require deep clouds. Polarimetry
+provides information complementary to photometry; at current instrument sensitivities it is
+most informative for high clouds with small grains
+([Sanghavi & West 2019](https://doi.org/10.3847/1538-4357/ab1b4e)).
+
+**Clouds in reflected light.** Widely used approximations — two-term Henyey–Greenstein, or
+the Henyey–Greenstein–Rayleigh composite — blur the phase-dependent features of exoplanet
+lightcurves, costing 10–39 % of sensitivity to atmospheric parameters and making clouds
+appear as polarizing as Rayleigh scatterers regardless of droplet size
+([Sanghavi, West & Jiang 2021](https://doi.org/10.3847/1538-4357/abcd99)). The
+Rayleigh-like polarization term gives every cloud scattering event a high polarizability,
+which, unlike real Rayleigh scattering, does not decrease toward the near infrared. Mie
+calculations show that cloud particles are depolarizing regardless of chemical species. The
+expectation that clouds produce strong polarization stems largely from this approximation.
+
+
+<!-- TODO(Suniti): add ocean-worlds / Europa work (sulfate brines) here if it should be featured. -->

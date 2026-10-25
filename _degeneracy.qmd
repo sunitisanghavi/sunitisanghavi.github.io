@@ -1,0 +1,23 @@
+```{=html}
+<div class="widget" id="degeneracy">
+  <div class="controls">
+    <label for="dg-albedo"><strong>Try it:</strong> assume an albedo</label>
+    <input id="dg-albedo" type="range" min="0.05" max="0.8" step="0.01" value="0.3">
+  </div>
+  <div class="readout"></div>
+  <svg viewBox="0 0 600 200" role="img" aria-label="Planet size implied by the chosen albedo for a fixed observed brightness">
+    <rect x="0" y="0" width="600" height="200" rx="10" fill="#0b1626"/>
+    <circle id="dg-planet" cx="300" cy="72" r="22" fill="#3a7bd5"/>
+    <rect id="dg-range" y="150" height="8" rx="4" fill="#f2a541" opacity=".35"/>
+    <line x1="40" y1="154" x2="560" y2="154" stroke="#3c5470"/>
+    <circle id="dg-marker" cy="154" r="6" fill="#f2a541"/>
+    <text id="dg-label" y="182" fill="#f2a541" font-size="12" text-anchor="middle" font-family="Inter, sans-serif"></text>
+    <text x="40" y="140" fill="#9fb3c8" font-size="11" font-family="Inter, sans-serif">0.5 R⊕</text>
+    <text x="560" y="140" fill="#9fb3c8" font-size="11" text-anchor="end" font-family="Inter, sans-serif">2.6 R⊕</text>
+  </svg>
+  <div class="caption">Schematic: for a fixed reflected-light contrast (∝ albedo × radius²), plausible albedos
+    of 0.05–0.8 (shaded band) allow radii spanning a factor of four — a factor of ~60 in volume.
+    Radius-free polarimetric and UV observables constrain the scattering state first, which narrows this range.</div>
+</div>
+<script src="assets/js/degeneracy.js"></script>
+```

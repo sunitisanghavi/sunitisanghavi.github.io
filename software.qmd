@@ -1,0 +1,101 @@
+---
+title: "Software"
+subtitle: "Radiative transfer codes and data products"
+---
+
+::: {.repo}
+### vSmartMOM / vSmartMOM.jl
+
+I developed vSmartMOM, originally written in Fortran and C++, as a vector (polarized) matrix-operator radiative transfer model with analytic derivatives
+([Sanghavi et al. 2013](https://doi.org/10.1016/j.jqsrt.2012.10.021);
+[Sanghavi, Davis & Eldering 2014](https://doi.org/10.1016/j.jqsrt.2013.09.004)). Since 2020 it
+has been rebuilt as the open-source Julia package **vSmartMOM.jl**. The Julia port began with
+Christian Frankenberg and Schmidt Software Fellow Rupesh Jeyaram, whose work I supervised (2020–2022;
+[JOSS 2022](https://doi.org/10.21105/joss.04575)).
+I lead its scientific development (formulations, linearization, Raman scattering, retrieval
+methodology); Christian Frankenberg contributes software engineering, performance and release
+integration.
+
+Today vSmartMOM.jl runs the same physics on heterogeneous CPU/GPU hardware and includes:
+
+- polarized multiple scattering with **analytic Jacobians**, including surface SIF;
+- **rotational and vibrational Raman scattering**;
+- line-by-line absorption from **HITRAN, HITEMP and ExoMol**;
+- a **fully coupled canopy–atmosphere** treatment. Rather than a simple BRDF, the canopy
+  (with atmosphere inside it) is a scattering medium described by leaf optical properties and
+  leaf angular distributions, with the soil as the lower boundary. It was benchmarked in the
+  JRC's first coupled surface–atmosphere intercomparison,
+  [RAMI4ATM](https://rami-benchmark.jrc.ec.europa.eu/_www/RAMI4ATM.php);
+- a polarized Cox–Munk ocean surface, with fully coupled **ocean–atmosphere** radiative
+  transfer in development;
+- brown-dwarf and directly imaged exoplanet radiative transfer (via ExoOptics.jl).
+
+It is used for Earth-observation work (SIF and greenhouse-gas retrieval biases, Carbon-I) and
+HWO reflected-light simulations.
+
+[GitHub](https://github.com/RemoteSensingTools/vSmartMOM.jl) ·
+[Documentation](https://RemoteSensingTools.github.io/vSmartMOM.jl/dev/) ·
+[JOSS paper](https://doi.org/10.21105/joss.04575) ·
+[Method paper (JQSRT 2014)](https://doi.org/10.1016/j.jqsrt.2013.09.004)
+
+```julia
+using Pkg; Pkg.add("vSmartMOM")
+```
+:::
+
+## Milestones
+
+<!-- From the GitHub history of RemoteSensingTools/vSmartMOM.jl and companion repos (checked Oct 2026). -->
+
+```{=html}
+<ul class="news">
+  <li><span class="date">2013–2014</span>
+    <strong>vSmartMOM</strong> (Fortran / C++) by Suniti Sanghavi: vector matrix-operator radiative transfer,
+    linearized with respect to aerosol and surface properties.</li>
+  <li><span class="date">2020</span>
+    Julia rewrite begins (initially <code>RadiativeTransfer.jl</code>), with GPU/CPU kernels from the start and
+    HITRAN-based cross-sections.</li>
+  <li><span class="date">2021</span>
+    Benchmarked against 6SV1; first inelastic (Raman) core routines added (Dec 2021).</li>
+  <li><span class="date">2022</span>
+    Raman optical properties and RT formalism (JQSRT Part I; Part II 2023); ExoMol/HITEMP support;
+    canopy optics (<code>CanopyOptics.jl</code>); v1.0 release and <em>JOSS</em> paper.</li>
+  <li><span class="date">2024–2025</span>
+    Raman correction for OCO-2/3 SIF retrievals (GRL 2025); v1.1.</li>
+  <li><span class="date">2026</span>
+    v2 series (v2.1, v2.2): fully coupled canopy–atmosphere RT (RAMI4ATM), polarized ocean surface and
+    <code>OceanOptics.jl</code>, GPU line-by-line absorption in <code>AtmosphericAbsorption.jl</code>
+    (HITRAN &amp; ExoMol, Voigt to Hartmann–Tran, line mixing, MT_CKD/CIA), <code>ExoOptics.jl</code> for brown dwarfs
+    and exoplanets, analytic Jacobians for multi-sensor retrievals (12–20× faster in tested inversions), and
+    the Google radiative transfer benchmark dataset.</li>
+  <li><span class="date">In development</span>
+    Fully coupled ocean–atmosphere radiative transfer.</li>
+</ul>
+```
+
+<!-- TODO: link the Google RT benchmark dataset (could not find a public URL). -->
+
+## The RemoteSensingTools ecosystem
+
+::: {.repo}
+| Package | Purpose |
+|---|---|
+| [vSmartMOM.jl](https://github.com/RemoteSensingTools/vSmartMOM.jl) | Polarized matrix-operator RT with Raman, canopy, ocean and analytic Jacobians |
+| [ExoOptics.jl](https://github.com/RemoteSensingTools/ExoOptics.jl) | Brown-dwarf and directly imaged exoplanet RT, built on vSmartMOM.jl |
+| [AtmosphericAbsorption.jl](https://github.com/RemoteSensingTools/AtmosphericAbsorption.jl) | GPU-accelerated molecular cross-sections from HITRAN & ExoMol |
+| [CanopyOptics.jl](https://github.com/RemoteSensingTools/CanopyOptics.jl) | Canopy optical properties (leaf optics, leaf angle distributions) |
+| [OceanOptics.jl](https://github.com/RemoteSensingTools/OceanOptics.jl) | Ocean optical properties for radiative transfer |
+| [InstrumentOperator.jl](https://github.com/RemoteSensingTools/InstrumentOperator.jl) | Instrument line shapes for hyperspectral sensors |
+:::
+
+<!-- TODO(Suniti): add other codes worth listing (e.g. the 3D conics-based brown dwarf / exoplanet
+     model, Raman optical-property tables). -->
+
+::: {.repo}
+### Data products
+
+- *Correcting the effects of Raman scattering on SIF retrievals* — lookup tables (JPL data set, 2024).
+- *Raman scattering in the Earth's atmosphere: radiative transport simulations* (JPL data set, 2023).
+
+<!-- TODO: add DOIs / landing-page URLs for the JPL data sets. -->
+:::

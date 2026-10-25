@@ -1,0 +1,172 @@
+::::: {.rblock .area-theory}
+
+:::: {.rblock-text}
+### Radiative transfer theory
+
+Vector (polarized) radiative transfer with the matrix-operator adding–doubling method,
+linearized analytically so that Jacobians with respect to aerosol, surface and gas
+parameters come with the forward calculation. Related work covers first-principles
+Cabannes and Raman optical properties of N₂ and O₂, Fourier expansion of Mie scattering
+matrices, δ-m and δ-fit truncation for polarized transfer, coupled canopy–atmosphere
+transfer, and a semi-analytic 3D framework for oblate, cloudy brown dwarfs.
+
+[Read more →](research.qmd#theory)
+::::
+
+:::: {.rblock-fig}
+```{=html}
+<svg class="area-svg" viewBox="0 0 520 330" role="img" aria-label="Adding of two layers in the matrix-operator method, with the Stokes vector">
+  <defs>
+    <marker id="th-a" viewBox="0 0 6 6" refX="3" refY="3" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#0d1b2a"/>
+    </marker>
+    <marker id="th-s" viewBox="0 0 6 6" refX="3" refY="3" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#f2a541"/>
+    </marker>
+  </defs>
+  <rect width="520" height="330" rx="10" fill="#fff" stroke="#e4e1d8"/>
+  <g font-family="Inter, sans-serif" font-size="12" fill="#0d1b2a">
+    <!-- layers -->
+    <rect x="40" y="100" width="250" height="34" fill="#dbe7f6"/>
+    <rect x="40" y="160" width="250" height="34" fill="#c3d7ef"/>
+    <text x="200" y="122">layer 1: R₁, T₁</text>
+    <text x="200" y="182">layer 2: R₂, T₂</text>
+    <!-- incident -->
+    <line x1="70" y1="40" x2="96" y2="98" stroke="#f2a541" stroke-width="2" marker-end="url(#th-s)"/>
+    <text x="52" y="34" fill="#b7791f">F₀</text>
+    <!-- interreflections between the layers -->
+    <polyline points="100,134 112,160 124,134 136,160 148,134 160,160 172,134" fill="none" stroke="#3a7bd5" stroke-width="1.5"/>
+    <!-- reflected and transmitted -->
+    <line x1="124" y1="98" x2="140" y2="56" stroke="#0d1b2a" stroke-width="1.6" marker-end="url(#th-a)"/>
+    <line x1="172" y1="98" x2="188" y2="56" stroke="#0d1b2a" stroke-width="1.2" marker-end="url(#th-a)" opacity=".6"/>
+    <text x="196" y="66">R₁₂</text>
+    <line x1="136" y1="196" x2="152" y2="238" stroke="#0d1b2a" stroke-width="1.6" marker-end="url(#th-a)"/>
+    <line x1="160" y1="196" x2="176" y2="238" stroke="#0d1b2a" stroke-width="1.2" marker-end="url(#th-a)" opacity=".6"/>
+    <text x="184" y="236">T₁₂</text>
+    <!-- adding equations -->
+    <text x="40" y="280" font-family="Source Serif 4, serif" font-size="15">R₁₂ = R₁ + T₁ R₂ (E − R₁ R₂)⁻¹ T₁</text>
+    <text x="40" y="304" font-family="Source Serif 4, serif" font-size="15">T₁₂ = T₂ (E − R₁ R₂)⁻¹ T₁</text>
+    <!-- Stokes vector -->
+    <g transform="translate(420,58)">
+      <text x="0" y="0" font-size="11" fill="#5b6b7b" text-anchor="middle">Stokes vector</text>
+      <path d="M-22,14 l-6,0 l0,92 l6,0 M22,14 l6,0 l0,92 l-6,0" fill="none" stroke="#0d1b2a" stroke-width="1.4"/>
+      <g font-family="Source Serif 4, serif" font-size="16" text-anchor="middle">
+        <text y="34">I</text><text y="56">Q</text><text y="78">U</text><text y="100">V</text>
+      </g>
+      <text x="0" y="132" font-size="10.5" fill="#5b6b7b" text-anchor="middle">R, T: 4×4 blocks per</text>
+      <text x="0" y="146" font-size="10.5" fill="#5b6b7b" text-anchor="middle">angle and Fourier moment</text>
+      <text x="0" y="174" font-size="10.5" fill="#5b6b7b" text-anchor="middle">+ analytic ∂R/∂x</text>
+    </g>
+  </g>
+</svg>
+```
+::::
+
+:::::
+
+::::: {.rblock .flip .area-software}
+
+:::: {.rblock-text}
+### High-performance software
+
+I originally wrote vSmartMOM in Fortran and C++. It is now the open-source Julia package
+**vSmartMOM.jl**, whose scientific development I lead. Companion packages provide molecular
+absorption from HITRAN and ExoMol, canopy and ocean optics, brown-dwarf and exoplanet
+atmospheres, and instrument line shapes. The same code runs on CPUs and GPUs.
+
+[Software and milestones →](software.qmd)
+::::
+
+:::: {.rblock-fig}
+```{=html}
+<svg class="area-svg" viewBox="0 0 520 330" role="img" aria-label="vSmartMOM.jl and its companion packages">
+  <rect width="520" height="330" rx="10" fill="#fff" stroke="#e4e1d8"/>
+  <g stroke="#c9c4b6" stroke-width="1.5">
+    <line x1="260" y1="150" x2="120" y2="62"/><line x1="260" y1="150" x2="400" y2="62"/>
+    <line x1="260" y1="150" x2="440" y2="168"/><line x1="260" y1="150" x2="380" y2="250"/>
+    <line x1="260" y1="150" x2="130" y2="250"/><line x1="260" y1="150" x2="80" y2="160"/>
+  </g>
+  <g font-family="Inter, sans-serif" text-anchor="middle">
+    <a href="https://github.com/RemoteSensingTools/vSmartMOM.jl">
+      <rect x="170" y="120" width="180" height="60" rx="10" fill="#0b1626"/>
+      <text x="260" y="146" font-size="15" font-weight="600" fill="#fff">vSmartMOM.jl</text>
+      <text x="260" y="166" font-size="10.5" fill="#9fb3c8">polarized RT · Raman · Jacobians</text>
+    </a>
+    <g font-size="11.5" fill="#0d1b2a">
+      <a href="https://github.com/RemoteSensingTools/AtmosphericAbsorption.jl">
+        <rect x="30" y="40" width="180" height="44" rx="8" fill="#eef4fb" stroke="#3a7bd5"/>
+        <text x="120" y="59" font-weight="600">AtmosphericAbsorption.jl</text>
+        <text x="120" y="75" font-size="10" fill="#5b6b7b">HITRAN · ExoMol · GPU</text></a>
+      <a href="https://github.com/RemoteSensingTools/CanopyOptics.jl">
+        <rect x="320" y="40" width="160" height="44" rx="8" fill="#eef7f0" stroke="#4f8a5b"/>
+        <text x="400" y="59" font-weight="600">CanopyOptics.jl</text>
+        <text x="400" y="75" font-size="10" fill="#5b6b7b">leaf optics · leaf angles</text></a>
+      <a href="https://github.com/RemoteSensingTools/OceanOptics.jl">
+        <rect x="370" y="146" width="140" height="44" rx="8" fill="#eaf6f8" stroke="#2bb3a3"/>
+        <text x="440" y="165" font-weight="600">OceanOptics.jl</text>
+        <text x="440" y="181" font-size="10" fill="#5b6b7b">water optical properties</text></a>
+      <a href="https://github.com/RemoteSensingTools/ExoOptics.jl">
+        <rect x="300" y="228" width="160" height="44" rx="8" fill="#fdf3e4" stroke="#f2a541"/>
+        <text x="380" y="247" font-weight="600">ExoOptics.jl</text>
+        <text x="380" y="263" font-size="10" fill="#5b6b7b">brown dwarfs · exoplanets</text></a>
+      <a href="https://github.com/RemoteSensingTools/InstrumentOperator.jl">
+        <rect x="40" y="228" width="180" height="44" rx="8" fill="#f3f1ea" stroke="#9aa9b8"/>
+        <text x="130" y="247" font-weight="600">InstrumentOperator.jl</text>
+        <text x="130" y="263" font-size="10" fill="#5b6b7b">instrument line shapes</text></a>
+      <g>
+        <rect x="14" y="140" width="100" height="40" rx="8" fill="#fff" stroke="#c9c4b6" stroke-dasharray="3 3"/>
+        <text x="64" y="157" font-weight="600">Fortran / C++</text>
+        <text x="64" y="172" font-size="10" fill="#5b6b7b">original code</text>
+      </g>
+    </g>
+    <g font-size="11" font-weight="600">
+      <rect x="196" y="296" width="56" height="22" rx="11" fill="#0b1626"/><text x="224" y="311" fill="#fff">CPU</text>
+      <rect x="262" y="296" width="62" height="22" rx="11" fill="#2bb3a3"/><text x="293" y="311" fill="#fff">GPU</text>
+    </g>
+  </g>
+</svg>
+```
+::::
+
+:::::
+
+::::: {.rblock .stack .area-earth}
+
+:::: {.rblock-text}
+### Earth's atmosphere
+
+The radiance measured from orbit results from scattering by molecules, aerosols and clouds,
+line-by-line absorption by trace gases, inelastic Raman scattering, and interaction with the
+surface — a vegetation canopy, soil or ocean. My work addresses how these processes affect
+retrievals of aerosols, clouds, CO₂, CH₄ and solar-induced fluorescence from instruments such
+as OCO-2/3, GOSAT, MISR and SCIAMACHY, including a Raman-scattering correction for SIF
+retrievals. I am the radiative transfer lead of the Carbon-I mission concept team.
+
+[Read more →](research.qmd#earth)
+::::
+
+:::: {.rblock-fig}
+{{< include _anatomy.qmd >}}
+::::
+
+:::::
+
+::::: {.rblock .flip .area-planets}
+
+:::: {.rblock-text}
+### Planets beyond Earth
+
+Photopolarimetric and spectropolarimetric modeling of brown dwarfs and directly imaged
+exoplanets. For HWO, multi-epoch ultraviolet observables — lightcurve shape, UV intensity and
+polarization colors, and degree of polarization — constrain the scattering state independently
+of planetary radius and so address the radius–albedo degeneracy of reflected-light
+detections ([Sanghavi, West & Chen 2026](https://arxiv.org/abs/2608.06649)).
+
+[Read more →](research.qmd#planets)
+::::
+
+:::: {.rblock-fig}
+{{< include _degeneracy.qmd >}}
+::::
+
+:::::

@@ -1,0 +1,13 @@
+/.quarto/
+/_site/
+.DS_Store
+*.icloud
+
+**/*.quarto_ipynb
+# Source PDFs stay local; only open-access PDFs listed in _quarto.yml are committed
+/papers/*.pdf
+!/papers/Sanghavi_amt-2015.pdf
+!/papers/Sanghavi2012AMT.pdf
+!/papers/Sanghavi_2026_arXiv_2608.06649.pdf
+!/papers/Jeyaram_2022_JOSS.pdf
+!/papers/Sanghavi_2026_JQSRT_Cabannes.pdf

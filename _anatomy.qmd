@@ -1,0 +1,118 @@
+```{=html}
+<figure class="anatomy">
+<svg id="anatomy" viewBox="0 0 1000 540" role="img" aria-labelledby="an-title an-desc">
+  <title id="an-title">Anatomy of a remote-sensing measurement</title>
+  <desc id="an-desc">Left: sunlight entering an atmospheric column is scattered by molecules, clouds and aerosols,
+    absorbed by trace gases, shifted in wavelength by Raman scattering, multiply scattered in a vegetation
+    canopy that also emits fluorescence, and refracted into the ocean, before reaching a satellite.
+    Right: the resulting reflectance spectrum from 400 to 2400 nm with absorption bands of O3, O2, H2O,
+    CO2, CH4 and N2O, and a zoom into the O2 A-band showing individual absorption lines.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0b1626"/>
+      <stop offset=".55" stop-color="#16345a"/>
+      <stop offset="1" stop-color="#3b6fa3"/>
+    </linearGradient>
+    <radialGradient id="sunGlow">
+      <stop offset="0" stop-color="#fff6dc"/>
+      <stop offset=".3" stop-color="#f2a541"/>
+      <stop offset="1" stop-color="#f2a541" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="colClip"><rect x="0" y="0" width="430" height="540" rx="14"/></clipPath>
+  </defs>
+
+  <!-- ===== Column ===== -->
+  <g clip-path="url(#colClip)">
+    <rect width="430" height="540" fill="url(#sky)"/>
+    <rect x="0" y="70" width="430" height="34" fill="#b39ddb" opacity=".10"/>
+    <text x="414" y="92" fill="#b39ddb" font-size="10" text-anchor="end" font-family="Inter, sans-serif" opacity=".8">ozone layer</text>
+
+    <g id="an-aerosols"></g>
+    <g id="an-molecules"></g>
+
+    <!-- cloud -->
+    <g fill="#f4f7fb" opacity=".9">
+      <circle cx="285" cy="200" r="18"/><circle cx="305" cy="190" r="22"/><circle cx="328" cy="200" r="17"/>
+      <circle cx="268" cy="208" r="12"/><rect x="262" y="200" width="78" height="18" rx="9"/>
+    </g>
+
+    <!-- ocean -->
+    <rect x="250" y="482" width="180" height="60" fill="#1d4e89"/>
+    <path d="M250,482 q11,-6 22,0 t22,0 t22,0 t22,0 t22,0 t22,0 t22,0 t22,0" fill="none" stroke="#7fb6e6" stroke-width="1.5"/>
+    <!-- canopy over soil -->
+    <rect x="0" y="508" width="250" height="34" fill="#5a3e2b"/>
+    <g fill="#3f8f4f">
+      <ellipse cx="30" cy="490" rx="16" ry="6" transform="rotate(-20 30 490)"/>
+      <ellipse cx="62" cy="478" rx="16" ry="6" transform="rotate(25 62 478)"/>
+      <ellipse cx="95" cy="495" rx="16" ry="6" transform="rotate(-35 95 495)"/>
+      <ellipse cx="122" cy="472" rx="16" ry="6" transform="rotate(15 122 472)"/>
+      <ellipse cx="152" cy="490" rx="16" ry="6" transform="rotate(-10 152 490)"/>
+      <ellipse cx="185" cy="476" rx="16" ry="6" transform="rotate(30 185 476)"/>
+      <ellipse cx="215" cy="494" rx="16" ry="6" transform="rotate(-25 215 494)"/>
+      <ellipse cx="78" cy="460" rx="14" ry="5" transform="rotate(-5 78 460)" fill="#5bb36b"/>
+      <ellipse cx="168" cy="458" rx="14" ry="5" transform="rotate(10 168 458)" fill="#5bb36b"/>
+      <ellipse cx="135" cy="503" rx="14" ry="5" transform="rotate(20 135 503)" fill="#2f6f3c"/>
+    </g>
+    <g font-family="Inter, sans-serif" font-size="10" fill="#cfe3d4">
+      <text x="8" y="533">canopy + soil</text>
+      <text x="422" y="533" text-anchor="end" fill="#bcd7f2">ocean</text>
+    </g>
+
+    <!-- sun & satellite -->
+    <circle cx="45" cy="45" r="34" fill="url(#sunGlow)"/>
+    <circle cx="45" cy="45" r="11" fill="#fff6dc"/>
+    <g transform="translate(385,45)">
+      <rect x="-16" y="-3" width="10" height="6" fill="#3a7bd5"/>
+      <rect x="6" y="-3" width="10" height="6" fill="#3a7bd5"/>
+      <rect x="-6" y="-6" width="12" height="12" rx="2" fill="#d9e2ec"/>
+      <path d="M-4,6 L0,11 L4,6" fill="#d9e2ec"/>
+    </g>
+    <text x="385" y="24" fill="#d9e2ec" font-size="10" text-anchor="middle" font-family="Inter, sans-serif">satellite</text>
+
+    <!-- photon paths + animated photons (filled in by anatomy.js) -->
+    <g id="an-paths" fill="none" stroke-width="1.2"></g>
+    <g id="an-photons"></g>
+  </g>
+
+  <!-- ===== Spectrum ===== -->
+  <g transform="translate(470,0)" font-family="Inter, sans-serif">
+    <text x="0" y="22" font-size="15" font-weight="600" fill="#0d1b2a" font-family="Source Serif 4, serif">What the satellite measures</text>
+    <g id="an-chips" transform="translate(0,36)"></g>
+
+    <g transform="translate(0,82) scale(0.765)">
+      <rect x="0" y="0" width="680" height="170" fill="#fff" stroke="#e4e1d8"/>
+      <g id="an-bands"></g>
+      <polyline id="an-ray" fill="none" stroke="#3a7bd5" stroke-width="1.6" stroke-dasharray="4 3" opacity="0"/>
+      <rect x="121.7" y="0" width="4.4" height="170" fill="#f2a541" opacity=".25"/>
+      <polyline id="an-spec" fill="none" stroke="#0d1b2a" stroke-width="1.1"/>
+      <g font-size="12" fill="#5b6b7b">
+        <text x="34" y="188" text-anchor="middle">500</text><text x="204" y="188" text-anchor="middle">1000</text>
+        <text x="374" y="188" text-anchor="middle">1500</text><text x="544" y="188" text-anchor="middle">2000</text>
+        <text x="680" y="188" text-anchor="end">nm</text>
+        <text x="-8" y="85" text-anchor="middle" transform="rotate(-90 -8 85)">reflectance</text>
+      </g>
+    </g>
+
+    <!-- zoom connector + O2 A-band inset -->
+    <path d="M93,212 L0,262 M96,212 L312,262" stroke="#f2a541" stroke-width=".8" fill="none" opacity=".7"/>
+    <g transform="translate(0,262) scale(1.2)">
+      <rect x="0" y="0" width="260" height="100" fill="#fff" stroke="#f2a541"/>
+      <polyline id="an-inset" fill="none" stroke="#0d1b2a" stroke-width=".7"/>
+    </g>
+    <g font-size="11" fill="#5b6b7b">
+      <text x="0" y="400">758 nm</text><text x="312" y="400" text-anchor="end">771 nm</text>
+      <text x="0" y="420" fill="#0d1b2a" font-weight="600">Zoom: the O₂ A-band at 0.01 nm</text>
+      <text x="0" y="436">Every dip is an individual rotational line — hundreds per band,</text>
+      <text x="0" y="451">thousands across the spectrum, each shaped by pressure and temperature.</text>
+    </g>
+
+    <!-- process legend -->
+    <g id="an-legend" transform="translate(340,262)" font-size="11.5"></g>
+  </g>
+</svg>
+<figcaption>Schematic. Hover over a gas or a process to highlight it; click the column to pause.
+Spectrum generated by <code>scripts/make_spectrum.jl</code> from simplified line lists — illustrative, not a radiative transfer calculation.</figcaption>
+</figure>
+<script src="assets/js/spectrum-data.js"></script>
+<script src="assets/js/anatomy.js"></script>
+```

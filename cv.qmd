@@ -1,0 +1,26 @@
+---
+title: "Curriculum Vitae"
+---
+
+<!-- TODO(Suniti): drop the CV as papers/Sanghavi_CV.pdf and uncomment the embed below. -->
+
+<!--
+[Download PDF](papers/Sanghavi_CV.pdf){.btn .btn-outline-primary}
+
+<object data="papers/Sanghavi_CV.pdf" type="application/pdf" width="100%" height="900px"></object>
+-->
+
+## Appointments
+
+<!-- TODO: positions with dates. -->
+
+- **Data Scientist**, Science Data Modeling and Computing Group, NASA Jet Propulsion Laboratory, California Institute of Technology <!-- TODO: start year; earlier positions -->
+
+## Education
+
+<!-- TODO: confirm years (taken from thesis dates on Google Scholar), add B.Sc. year. -->
+
+- **Ph.D. in Physics**, Heidelberg University, Germany (2008) — dissertation: *Model and algorithm development for the retrieval of atmospheric aerosol properties from SCIAMACHY*
+- **Diploma in Physics**, Heidelberg University, Germany (2003) — thesis: *An efficient Mie theory implementation to investigate the influence of aerosols on radiative transfer*
+- **B.Sc. in Physics**, University of Mumbai, India
+

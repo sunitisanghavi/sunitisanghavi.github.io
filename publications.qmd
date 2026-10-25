@@ -1,0 +1,15 @@
+---
+title: "Publications"
+listing:
+  id: pubs
+  contents: data/publications.yml
+  template: _templates/publications.ejs
+  sort: false
+---
+
+Peer-reviewed articles, preprints and software papers. Conference abstracts and technical
+reports are listed in the [CV](cv.qmd). A complete, automatically updated list is on
+[Google Scholar](https://scholar.google.com/citations?user=fKACl6kAAAAJ).
+
+::: {#pubs}
+:::

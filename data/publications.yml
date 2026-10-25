@@ -1,0 +1,474 @@
+# Single source of truth for the publication list.
+# Fields:
+#   title, authors, venue, year (required)
+#   doi / url / arxiv / pdf (optional; pdf is a filename inside papers/)
+#   theme: space-separated subset of  theory | software | earth | planets
+#   type:  article | preprint | software
+#   selected: true  -> shown with a "Selected" badge (key papers)
+#   key: short id; summary: <=100-word summary (first-author papers and the JOSS paper only)
+#   figure: image file in assets/img/papers/; figcaption: caption incl. figure number and source
+# Journal articles and preprints only; abstracts/reports live in the CV.
+
+- title: "Multi-epoch ultraviolet observables for breaking the radius–albedo degeneracy in directly imaged exoplanets"
+  authors: "S. Sanghavi, R. A. West, P. Chen"
+  venue: "arXiv:2608.06649 (submitted)"
+  year: 2026
+  arxiv: "2608.06649"
+  pdf: "Sanghavi_2026_arXiv_2608.06649.pdf"
+  theme: "planets software"
+  type: preprint
+  selected: true
+  key: "sanghavi2026hwo"
+  summary: >-
+    Brightness alone cannot distinguish a large, dark planet from a small, bright one. It
+    constructs radius-independent observables: the normalized 400 nm lightcurve shape,
+    ultraviolet intensity and polarization colors, and degree of linear polarization. In the
+    360–400 nm window, where Rayleigh scattering dominates and bright surfaces are nearly
+    colorless, these constrain the atmospheric column, surface reflectivity and phases before
+    the radius is inferred. With six epochs and unknown phases, median radius errors are 14 %,
+    3.2 % and 0.47 % at S/N 5, 20 and 100. This gives an observing path to radii of
+    non-transiting HWO targets and argues for a window shortward of 400 nm.
+  figure: "sanghavi2026hwo.png"
+  figcaption: "Fractional radius uncertainty versus S/N for six-phase HWO campaigns of solar twins at 6 and 12 pc, with and without polarimetry, for three Rayleigh optical depths. Fig. 10 of the paper."
+
+- title: "Isolating Cabannes and rotational Raman scattering to determine forward modeling error due to Rayleigh scattering in the Earth's atmosphere"
+  authors: "S. Sanghavi"
+  venue: "Journal of Quantitative Spectroscopy and Radiative Transfer, 363, 110077"
+  year: 2026
+  doi: "10.1016/j.jqsrt.2026.110077"
+  pdf: "Sanghavi_2026_JQSRT_Cabannes.pdf"
+  theme: "theory"
+  type: article
+  key: "sanghavi2026cabannes"
+  summary: >-
+    Models usually treat molecular scattering as Rayleigh scattering. This paper shows that
+    this monochromatic approximation is biased where the spectrum is structured, because
+    molecular scattering consists of elastic Cabannes and rotational Raman scattering. It
+    derives the Cabannes single-scattering albedo and depolarization ratio of N₂, O₂ and air
+    from Placzek's theory and resolves both components in vSmartMOM. For the O₂ A-band, used
+    to constrain airmass in greenhouse-gas retrievals and by FLEX for fluorescence, it
+    quantifies how the bias depends on surface brightness, pressure, geometry and aerosol and
+    proposes a lookup-table correction. This matters for hyperspectral observations from the
+    ultraviolet to near-infrared.
+  figure: "sanghavi2026cabannes.png"
+  figcaption: "When the Rayleigh formulation fails: molecular scattering (Cabannes + rotational Raman) compared with the Rayleigh approximation for a flat solar spectrum without absorption (left), the real solar spectrum with Fraunhofer lines (middle) and the solar spectrum plus O₂ A-band absorption (right), for three surface albedos. Fig. 2 of the paper (CC BY-NC)."
+
+- title: "Inferring drivers of tropical isoprene: competing effects of emissions and chemistry"
+  authors: "J. Yoon, K. Wells, D. Millet, C. Frankenberg, S. Sanghavi, A. Swann, J. Thornton, A. Turner"
+  venue: "Atmospheric Chemistry and Physics, 26"
+  year: 2026
+  doi: "10.5194/acp-26-4509-2026"
+  theme: "earth"
+  type: article
+
+- title: "Impact of Raman scattering on SIF retrievals from hyperspectral satellite observations"
+  authors: "S. Sanghavi, C. Frankenberg, R. Nelson, C. O'Dell, R. Rosenberg, J. Joiner"
+  venue: "Geophysical Research Letters, 52, e2024GL112777"
+  year: 2025
+  doi: "10.1029/2024gl112777"
+  theme: "theory earth"
+  type: article
+  selected: true
+  key: "sanghavi2025sif"
+  summary: >-
+    Solar-induced chlorophyll fluorescence (SIF) is retrieved from the filling-in of solar
+    Fraunhofer lines, which inelastic (Raman) scattering of sunlight also produces. Polarized
+    radiative transfer simulations of nadir observations near the O₂ A-band show that
+    inelastic scattering causes spurious SIF of up to 0.35 mW m⁻² sr⁻¹ nm⁻¹ over
+    vegetation-free regions such as the Sahara, Greenland and Antarctica. Zero-level offset
+    corrections leave residual biases of about ±0.15 mW m⁻² sr⁻¹ nm⁻¹ that correlate with
+    surface brightness, elevation and viewing geometry. A simulation-based lookup table
+    subtracts the inelastic contribution; at publication it was being incorporated into the
+    operational OCO-2/3 products. Red SIF retrievals (GOME-2, TROPOMI, FLEX) are most
+    affected.
+  figure: "sanghavi2025sif.png"
+  figcaption: "Modeled Raman-scattering bias in SIF retrievals, uncorrected (left) and after the standard OCO-2 zero-level offset correction (right). Fig. 3b of the paper."
+
+- title: "On the use of N₂O as a light-path proxy for accurate greenhouse gas measurements from space"
+  authors: "C. Frankenberg, S. Sanghavi, A. Saha, P. Wennberg, D. Jacob, A. Michalak"
+  venue: "Geophysical Research Letters, 52(17)"
+  year: 2025
+  doi: "10.1029/2024gl114131"
+  theme: "earth"
+  type: article
+
+- title: "Raman scattering in the Earth's atmosphere, Part II: Radiative transfer modeling for remote sensing applications"
+  authors: "S. Sanghavi, C. Frankenberg"
+  venue: "Journal of Quantitative Spectroscopy and Radiative Transfer, 311, 108791"
+  year: 2023
+  doi: "10.1016/j.jqsrt.2023.108791"
+  theme: "theory"
+  type: article
+  key: "sanghavi2023raman2"
+  summary: >-
+    Building on Part I, this paper gives the radiative transfer formulation for fully
+    polarized simulations of rotational, vibrational and rovibrational Raman scattering in the
+    matrix-operator model vSmartMOM. The formulation is designed for GPUs, so that
+    multi-wavelength inelastic computations need neither coarse spectral binning nor a
+    single-scattering approximation. It is applied to Raman lidar returns, the Ring effect,
+    Fraunhofer-line ghosting by vibrational scattering and inelastic filling-in of the O₂
+    A-band, confirming for the A-band that vibrational scattering is negligible and single
+    scattering adequate. These full-Stokes, multiple-scattering simulations at high spectral
+    resolution underlie the later SIF and Rayleigh-bias corrections.
+  figure: "sanghavi2023raman2.png"
+  figcaption: "Simulated Stokes I and Q at 385–415 nm without Raman scattering (top) and the changes caused by inelastic scattering, i.e. the Ring effect (middle and bottom). Fig. 9 of the paper."
+
+- title: "Raman scattering in the Earth's atmosphere, Part I: Optical properties"
+  authors: "S. Sanghavi"
+  venue: "Journal of Quantitative Spectroscopy and Radiative Transfer, 291, 108328"
+  year: 2022
+  doi: "10.1016/j.jqsrt.2022.108328"
+  theme: "theory"
+  type: article
+  key: "sanghavi2022raman1"
+  summary: >-
+    Raman scattering in the Earth's atmosphere is caused mainly by N₂ and O₂. Many molecular
+    constants are needed, cross-sections and depolarization ratios differ between rotational,
+    vibrational and rovibrational transitions, and the literature uses inconsistent notation.
+    This paper unifies the formalisms of Long and Chandrasekhar so that Placzek's theory of
+    molecular polarizability can be expressed through the cross-sections and scattering
+    matrices used in radiative transfer, using Buldakov's simplified diatomic
+    polarizabilities. It tabulates the constants, cross-sections and phase matrices of N₂ and
+    O₂ on which Part II builds; the treatment transfers to atmospheres rich in diatomic
+    species such as H₂ and CO.
+  figure: "sanghavi2022raman1.png"
+  figcaption: "Rotational, vibrational and rovibrational Raman cross-sections of N₂ (top) and O₂ (bottom) for light incident at 400 nm, with Rayleigh scattering for reference. Fig. 1 of the paper."
+
+- title: "vSmartMOM.jl: an open-source Julia package for atmospheric radiative transfer and remote sensing tools"
+  authors: "R. Jeyaram, S. Sanghavi, C. Frankenberg"
+  venue: "Journal of Open Source Software, 7(80), 4575"
+  year: 2022
+  doi: "10.21105/joss.04575"
+  pdf: "Jeyaram_2022_JOSS.pdf"
+  theme: "software"
+  type: software
+  key: "jeyaram2022joss"
+  summary: >-
+    vSmartMOM.jl is an open-source Julia package for computing atmospheric optical properties
+    and fully polarized, multiple-scattering radiances with the matrix operator method. Users
+    set trace-gas profiles, aerosol size distributions and microphysics, surface reflectance
+    and quadrature schemes; the absorption and scattering submodules can be used alone. Rather
+    than porting legacy Fortran or C++ code, it was designed for CPUs and GPUs and for
+    automatic differentiation, which provides Jacobians for spectral fitting. At publication
+    it had been used for methane-plume simulation, aerosol profile fitting, brown-dwarf and
+    exoplanet spectropolarimetry and graduate coursework; the later Raman, SIF and HWO studies
+    build on it.
+  figure: "jeyaram2022joss.png"
+  figcaption: "Runtime of a vSmartMOM.jl radiative transfer simulation on CPU and GPU versus the number of spectral points. Fig. 4 of the paper."
+
+- title: "Cloudy atmospheres on directly imaged exoplanets: the need for accurate particulate representation in photopolarimetric modeling"
+  authors: "S. Sanghavi, R. West, J. Jiang"
+  venue: "The Astrophysical Journal, 907, 30"
+  year: 2021
+  doi: "10.3847/1538-4357/abcd99"
+  theme: "planets"
+  type: article
+  selected: true
+  key: "sanghavi2021apj"
+  summary: >-
+    Direct-imaging missions and polarimeters like GPI and SPHERE observe starlight reflected
+    by possibly cloudy exoplanets. It extends the semi-analytic 3D brown-dwarf framework to
+    reflected light, using Mie theory for cloud and haze particles. The two-term
+    Henyey–Greenstein and Henyey–Greenstein–Rayleigh (HGR) approximations blur phase-dependent
+    lightcurve features and lose 10–39 % of the sensitivity to atmospheric parameters at S/N
+    5–500. HGR makes clouds as polarizing as Rayleigh scatterers regardless of droplet size,
+    whereas real particles depolarize. With Mie scattering, polarimetry adds 10–30 %
+    sensitivity; with HGR, almost none. Particle optics thus affect the interpretation of
+    polarimetric data and the case for polarimetry on future instruments.
+  figure: "sanghavi2021apj.png"
+  figcaption: "Phase-matrix elements of cloud particles of three sizes from Mie theory, compared with the Henyey–Greenstein–Rayleigh (HGR) and two-term Henyey–Greenstein (TTHG) approximations. Fig. 3 of the paper."
+
+- title: "Aerosols in OCO-2/GOSAT retrievals of XCO₂: an information content and error analysis"
+  authors: "S. Sanghavi, R. Nelson, C. Frankenberg, M. Gunson"
+  venue: "Remote Sensing of Environment, 251, 112053"
+  year: 2020
+  doi: "10.1016/j.rse.2020.112053"
+  theme: "earth"
+  type: article
+  key: "sanghavi2020rse"
+  summary: >-
+    This paper analyzes how aerosols affect XCO₂ retrievals from OCO-2 and GOSAT. Simulated
+    multi-angle spectropolarimetric observations in the O₂ A-band and CO₂ bands quantify the
+    information on aerosol, surface and molecular parameters for different measurement
+    combinations, with aerosol microphysics retrieved or fixed. The 0.2 % accuracy requirement
+    is difficult to meet with intensity-only nadir measurements; multi-angle and polarimetric
+    measurements reduce the uncertainty. Fixed microphysics can bias XCO₂ by 1–8 % at low
+    aerosol optical thickness over dark surfaces, whereas retrieving it keeps biases
+    negligible. The results favor multi-angle and polarimetric capability and retrieved rather
+    than prescribed aerosol microphysics in future greenhouse-gas missions.
+  figure: "sanghavi2020rse.jpg"
+  figcaption: "XCO₂ retrieval bias (%) with fixed aerosol microphysics versus O₂ A-band and CO₂-band surface reflectance and aerosol optical thickness, for 0.1 µm (a) and 0.5 µm (b) aerosols. Fig. 11 of the paper."
+
+- title: "Spectropolarimetric characteristics of brown dwarfs. II. Uniform clouds"
+  authors: "S. Sanghavi, R. West"
+  venue: "The Astrophysical Journal, 877, 134"
+  year: 2019
+  doi: "10.3847/1538-4357/ab1b4e"
+  theme: "planets"
+  type: article
+  key: "sanghavi2019apj"
+  summary: >-
+    This paper adds molecular opacities to the conics-based brown-dwarf framework, so that the
+    wavelength-dependent vertical structure follows from internal energy, gravity and
+    metallicity. Polarized J, H and K spectra are computed for ranges of internal energy,
+    gravity, cloud grain size and cloud depth. T dwarfs are fit more easily with cloudless
+    atmospheres or high clouds; L dwarfs require deep clouds. Polarimetry adds information
+    complementary to photometry; at current sensitivities it helps most for high,
+    small-grained clouds. With Paper I it allows near-infrared photopolarimetry of L and T
+    dwarfs to be interpreted in terms of cloud depth and grain size.
+  figure: "sanghavi2019apj.png"
+  figcaption: "Disk-averaged intensity (top) and degree of linear polarization (bottom) in the J, H and K bands for a 4000 K, log g = 4 brown dwarf, for clouds at different pressure levels. Fig. 12 of the paper."
+
+- title: "Photopolarimetric characteristics of brown dwarfs. I. Uniform cloud decks"
+  authors: "S. Sanghavi, A. Shporer"
+  venue: "The Astrophysical Journal, 866, 28"
+  year: 2018
+  doi: "10.3847/1538-4357/aadf94"
+  theme: "planets theory"
+  type: article
+  selected: true
+  key: "sanghavi2018apj"
+  summary: >-
+    Brown dwarfs rotate rapidly and can be considerably oblate; scattering by electrons,
+    molecules, haze or clouds polarizes their emission. It presents a conics-based scheme for
+    the disk-resolved and disk-integrated polarized emission of oblate brown dwarfs and giant
+    planets with uniform or patchy clouds. Polarization increases with oblateness and
+    inclination and constrains the spin-axis orientation. Gravity darkening can strongly
+    amplify it. For large cloud grains polarization drops sharply, so polarimetry also carries
+    information on grain size. It provides an analytic basis for fast simulations of patchy
+    clouds and temperature patterns on oblate bodies and underlies the later
+    spectropolarimetric and reflected-light work.
+  figure: "sanghavi2018apj.jpg"
+  figcaption: "Disk-resolved Stokes I, Q and U of thermal emission at 1000 nm from a cloudy brown dwarf: spherical (top) and oblate with gravity darkening (bottom). Fig. 12 of the paper."
+
+- title: "Sensitivity analysis of polarimetric O₂ A-band spectra for potential cloud retrievals using OCO-2/GOSAT measurements"
+  authors: "S. Sanghavi, M. Lebsock, G. Stephens"
+  venue: "Atmospheric Measurement Techniques, 8, 3601–3616"
+  year: 2015
+  doi: "10.5194/amt-8-3601-2015"
+  pdf: "Sanghavi_amt-2015.pdf"
+  theme: "earth"
+  type: article
+  key: "sanghavi2015amt"
+  summary: >-
+    High-resolution O₂ A-band spectra from GOSAT and OCO-2 could allow cloud retrievals and
+    reduce CO₂ airmass biases. This paper studies the polarimetric A-band sensitivity to cloud
+    optical thickness, top height, geometric thickness and droplet size. Intensity best
+    constrains optical thickness; cloud height and thickness are most sensitive at
+    intermediate absorption strengths. Droplet size is best constrained outside absorption
+    lines and from multiple angles, especially near the glory and rainbow. Because I and Q
+    respond differently, two orthogonal components, as in GOSAT, carry more information than
+    one. The distinct responses suggest simultaneous retrieval, with OCO-2 target-mode data
+    constraining droplet size.
+  figure: "sanghavi2015amt.jpg"
+  figcaption: "O₂ A-band intensity (top) and Q (bottom) versus wavelength and absorption strength for a cloud of optical thickness 10 at top heights from 2.4 to 12.4 km. Fig. 6 of the paper."
+
+- title: "Adaptation of the delta-m and δ-fit truncation methods to vector radiative transfer: effect of truncation on radiative transfer accuracy"
+  authors: "S. Sanghavi, G. Stephens"
+  venue: "Journal of Quantitative Spectroscopy and Radiative Transfer, 159"
+  year: 2015
+  doi: "10.1016/j.jqsrt.2015.03.007"
+  theme: "theory"
+  type: article
+  key: "sanghavi2015deltam"
+  summary: >-
+    Cloud and aerosol phase functions need hundreds of Fourier components, which truncation
+    reduces; few rigorous studies had covered the vector case. It derives the vector form of
+    Wiscombe's delta-m method and identifies two error sources, delta-separation and
+    phase-truncation error, largest near exact backscatter, a common satellite geometry. It
+    adapts the δ-fit approach of Hu et al. to vector radiative transfer (δBGE-fit). For
+    truncation at l = 25 of a phase matrix with over 300 components, δBGE-fit minimizes errors
+    near backscatter and nearly removes them elsewhere. Truncation also distorts absorption
+    line shapes, so δBGE-fit is recommended for XCO₂ retrievals from OCO-2 and GOSAT.
+  figure: "sanghavi2015deltam.png"
+  figcaption: "O₂ A-band I and |Q| near 769.2 nm at three view angles close to backscatter: exact calculation compared with delta-m and δBGE-fit truncation. Fig. 9 of the paper."
+
+- title: "vSmartMOM: a vector matrix operator method-based radiative transfer model linearized with respect to aerosol properties"
+  authors: "S. Sanghavi, A. B. Davis, A. Eldering"
+  venue: "Journal of Quantitative Spectroscopy and Radiative Transfer, 133, 412–433"
+  year: 2014
+  doi: "10.1016/j.jqsrt.2013.09.004"
+  theme: "theory software"
+  type: article
+  selected: true
+  key: "sanghavi2014vsmartmom"
+  summary: >-
+    This paper extends the matrix-operator model smartMOM to polarized radiative transfer.
+    Intensities are computed for the exact viewing geometry by ray tracing rather than
+    interpolation, and vector delta-m truncation reduces the quadrature points and expansion
+    coefficients needed. Against the Kokhanovsky et al. benchmark, Rayleigh-atmosphere Stokes
+    parameters agree mostly to the seventh significant digit, and aerosol and cloud
+    intensities within 0.05 % away from the forward peak. It is the first linearization of
+    vector matrix-operator radiative transfer with respect to aerosol optical and
+    microphysical parameters; its analytic Jacobians compare aerosol information in
+    intensity-only and polarimetric data. It was later rebuilt as vSmartMOM.jl.
+  figure: "sanghavi2014vsmartmom.jpg"
+  figcaption: "Analytic Jacobians of I, Q, U and V versus viewing angle with respect to coarse-mode (left) and fine-mode (right) aerosol optical thickness at 446, 558, 672 and 866 nm; solid: principal plane, dashed: perpendicular plane. Fig. 7 of the paper."
+
+- title: "Revisiting the Fourier expansion of Mie scattering matrices in generalized spherical functions"
+  authors: "S. Sanghavi"
+  venue: "Journal of Quantitative Spectroscopy and Radiative Transfer, 136"
+  year: 2014
+  doi: "10.1016/j.jqsrt.2013.12.015"
+  theme: "theory"
+  type: article
+  key: "sanghavi2014domke"
+  summary: >-
+    Computing Fourier moments of the Mie phase matrix is costly in aerosol and cloud modeling.
+    The usual approach integrates the phase matrix numerically over angle; Domke (1975)
+    proposed direct computation with Wigner 3-j symbols, but his main recurrence relation
+    remained misprinted and the method was thought practical only below size parameter 120.
+    This paper gives the corrected relation and an implementation with precomputed 3-j tables,
+    accurate to machine precision. For polydispersions it is at least 6–8 times faster; for
+    single particles numerical integration wins above size parameter 228. This makes Domke's
+    approach practical for polydisperse aerosol and cloud scattering.
+  figure: "sanghavi2014domke.png"
+  figcaption: "Computation time of numerical integration (NAI-2) and the corrected Domke method with precomputed Wigner 3-j symbols (PCW), for size distributions (a) and single particles (b). Fig. 2 of the paper."
+
+- title: "Using analytic derivatives to assess the impact of phase function Fourier decomposition technique on the accuracy of a radiative transfer model"
+  authors: "S. Sanghavi, V. Natraj"
+  venue: "Journal of Quantitative Spectroscopy and Radiative Transfer, 119"
+  year: 2013
+  doi: "10.1016/j.jqsrt.2012.12.028"
+  theme: "theory"
+  type: article
+  key: "sanghavi2013fourier"
+  summary: >-
+    Multiple-scattering calculations need a Fourier decomposition of the phase function, by
+    numerical transform or Legendre expansion. The numerical route interpolates between
+    angles, and its error is hard to quantify from intensities alone. Analytic derivatives
+    serve as a self-consistency test: analytic Jacobians are compared with finite differences
+    in two otherwise identical linearized matrix-operator codes. Legendre expansion reduces
+    the error by several orders of magnitude. For the numerical transform, error falls with
+    angular resolution, so interpolation dominates; layers with several scatterers add a
+    further error. The numerical transform should be avoided in favor of Legendre expansion,
+    especially for peaked aerosol phase functions.
+  figure: "sanghavi2013fourier.png"
+  figcaption: "Jacobians of reflectance with respect to the real refractive index (top) and their deviation from finite differences (bottom), using numerical Fourier decomposition (left) and Legendre expansion (right). Fig. 4 of the paper."
+
+- title: "Linearization of a scalar matrix operator method radiative transfer model with respect to aerosol and surface properties"
+  authors: "S. Sanghavi, J. V. Martonchik, A. B. Davis, D. J. Diner"
+  venue: "Journal of Quantitative Spectroscopy and Radiative Transfer, 116"
+  year: 2013
+  doi: "10.1016/j.jqsrt.2012.10.021"
+  theme: "theory"
+  type: article
+  key: "sanghavi2013linmom"
+  summary: >-
+    Optimization-based retrievals need the Jacobian matrix: the derivatives of the measurement
+    with respect to retrieved parameters. This paper reviews the matrix operator method and
+    derives analytic derivatives with respect to the optical thickness, refractive index and
+    lognormal size distribution of a bimodal aerosol, and to Lambertian, modified
+    Rahman–Pinty–Verstraete and Fresnel ocean surface parameters. The analytic Jacobians are
+    verified against finite differences, which depend on step size, particularly for
+    microphysical parameters. The speed advantage grows with the number of parameters, with
+    parity for one parameter. This exact linearization makes optimal-estimation aerosol
+    retrievals with matrix-operator models practical and underlies vSmartMOM.
+  figure: "sanghavi2013linmom.jpg"
+  figcaption: "Analytic Jacobians of normalized intensity in four MISR bands versus viewing angle, for parameters of the coarse and fine aerosol modes. Fig. 6 of the paper."
+
+- title: "Aerosol information content analysis of multi-angle high spectral resolution measurements and its benefit for high accuracy greenhouse gas retrievals"
+  authors: "C. Frankenberg, O. Hasekamp, C. O'Dell, S. Sanghavi, A. Butz, J. Worden"
+  venue: "Atmospheric Measurement Techniques, 5, 1809–1821"
+  year: 2012
+  doi: "10.5194/amt-5-1809-2012"
+  theme: "earth"
+  type: article
+
+- title: "An optimization approach for aerosol retrievals using simulated MISR radiances"
+  authors: "D. J. Diner, R. A. Hodos, A. B. Davis, M. J. Garay, J. V. Martonchik, S. Sanghavi, P. von Allmen, A. A. Kokhanovsky, P. Zhai"
+  venue: "Atmospheric Research, 116, 1–14"
+  year: 2012
+  doi: "10.1016/j.atmosres.2011.05.020"
+  theme: "earth theory"
+  type: article
+
+- title: "Linearization of Markov chain formalism for vector radiative transfer in a plane-parallel atmosphere/surface system"
+  authors: "F. Xu, A. B. Davis, S. Sanghavi, J. V. Martonchik, D. J. Diner"
+  venue: "Applied Optics, 51(16), 3491"
+  year: 2012
+  doi: "10.1364/ao.51.003491"
+  theme: "theory"
+  type: article
+
+- title: "Retrieval of the optical depth and vertical distribution of particulate scatterers in the atmosphere using O₂ A- and B-band SCIAMACHY observations over Kanpur"
+  authors: "S. Sanghavi, J. V. Martonchik, J. Landgraf, U. Platt"
+  venue: "Atmospheric Measurement Techniques, 5, 1099–1119"
+  year: 2012
+  doi: "10.5194/amt-5-1099-2012"
+  pdf: "Sanghavi2012AMT.pdf"
+  theme: "earth"
+  type: article
+  key: "sanghavi2012amt"
+  summary: >-
+    The O₂ A-band has long been used to estimate aerosol and cloud vertical distributions from
+    space. This paper adds part of the B-band, also measured by SCIAMACHY, to an
+    optimal-estimation retrieval of particulate optical thickness and lognormal vertical
+    profile over bright and dark surfaces. Information-content analysis shows the B-band adds
+    vertical information, because its absorption strength and surface albedo differ from the
+    A-band's. Applied to Kanpur in 2003, retrieved monthly optical thicknesses correlate with
+    AERONET (r = 0.92, non-monsoon months). Radiometric uncertainties and computational cost
+    limited application to this case study, which nevertheless showed a stable, physics-based
+    aerosol-profile retrieval from SCIAMACHY alone.
+  figure: "sanghavi2012amt.png"
+  figcaption: "Retrieved peak heights of the particulate layer over Kanpur in 2003 with FWHM band (top), and all retrieved lognormal vertical profiles colored by season (bottom). Fig. 10 of the paper."
+
+- title: "Bichromatic method for identification of clear-sky scenarios over ground pixel viewed from space"
+  authors: "S. Sanghavi, U. Platt, J. Landgraf"
+  venue: "Applied Optics, 49(17), 3282"
+  year: 2010
+  doi: "10.1364/ao.49.003282"
+  theme: "earth"
+  type: article
+  key: "sanghavi2010ao"
+  summary: >-
+    This paper identifies clear-sky scenes in a satellite time series over a pixel with
+    unknown albedo and aerosol type. Reflectance does not vary monotonically with aerosol
+    loading, so observations cannot simply be ranked by it. Treating each observation as
+    aerosol-free, the relative contrast between the resulting Lambertian equivalent albedos at
+    two wavelengths of different surface albedo varies monotonically with aerosol. Applied to
+    SCIAMACHY data over a non-dark surface, it is validated against measured and modeled O₂ A-
+    and B-band absorption. Independent of surface brightness and aerosol type, it applies
+    across instruments; the 2012 SCIAMACHY retrieval confirmed its premise.
+  figure: "sanghavi2010ao.png"
+  figcaption: "Apparent Lambertian albedos at 682 and 755 nm from SCIAMACHY over Kanpur in 2003 and their relative contrast; vertical lines mark likely clear-sky days. Fig. 5 of the paper."
+
+- title: "Photolysis frequency measurement techniques: results of a comparison within the ACCENT project"
+  authors: "B. Bohn, G. K. Corlett, M. Gillmann, S. Sanghavi, et al."
+  venue: "Atmospheric Chemistry and Physics, 8, 5373–5391"
+  year: 2008
+  doi: "10.5194/acp-8-5373-2008"
+  theme: "earth"
+  type: article
+
+- title: "Comparison of box-air-mass-factors and radiances for Multiple-Axis Differential Optical Absorption Spectroscopy (MAX-DOAS) geometries calculated from different UV/visible radiative transfer models"
+  authors: "T. Wagner, J. P. Burrows, T. Deutschmann, et al. (incl. S. Sanghavi)"
+  venue: "Atmospheric Chemistry and Physics, 7, 1809–1833"
+  year: 2007
+  doi: "10.5194/acp-7-1809-2007"
+  theme: "earth theory"
+  type: article
+
+- title: "Intercomparison exercise between different radiative transfer models used for the interpretation of ground-based zenith-sky and multi-axis DOAS observations"
+  authors: "F. Hendrick, M. Van Roozendael, A. Kylling, A. Petritoli, A. Rozanov, S. Sanghavi, et al."
+  venue: "Atmospheric Chemistry and Physics, 6, 93–108"
+  year: 2006
+  doi: "10.5194/acp-6-93-2006"
+  theme: "earth theory"
+  type: article
+
+- title: "El Niño induced anomalies in global data sets of total column precipitable water and cloud cover derived from GOME"
+  authors: "T. Wagner, S. Beirle, M. Grzegorski, S. Sanghavi, U. Platt"
+  venue: "Journal of Geophysical Research, 110(D15)"
+  year: 2005
+  doi: "10.1029/2005jd005972"
+  theme: "earth"
+  type: article
+
+- title: "MAX-DOAS O₄ measurements: a new technique to derive information on atmospheric aerosols — principles and information content"
+  authors: "T. Wagner, B. Dix, C. v. Friedeburg, U. Frieß, S. Sanghavi, R. Sinreich, U. Platt"
+  venue: "Journal of Geophysical Research, 109, D22205"
+  year: 2004
+  doi: "10.1029/2004jd004904"
+  theme: "earth"
+  type: article

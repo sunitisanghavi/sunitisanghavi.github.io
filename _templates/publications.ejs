@@ -1,0 +1,74 @@
+```{=html}
+<div class="pub-filters" role="group" aria-label="Filter publications by theme">
+  <button class="active" data-filter="all">All</button>
+  <button data-filter="selected">Selected</button>
+  <button data-filter="theory">Radiative transfer theory</button>
+  <button data-filter="software">High-performance software</button>
+  <button data-filter="earth">Earth's atmosphere</button>
+  <button data-filter="planets">Planets beyond Earth</button>
+  <button class="toggle-summaries" type="button" aria-pressed="false">Show all summaries</button>
+</div>
+<div id="pub-list">
+<%
+  const sorted = [...items].sort((a, b) => b.year - a.year);
+  let lastYear = null;
+  for (const item of sorted) {
+    if (item.year !== lastYear) { lastYear = item.year; %>
+  <div class="pub-year" data-year="<%= item.year %>"><%= item.year %></div>
+<%  }
+    const authors = String(item.authors).replace(/(S\. Sanghavi)/g, '<strong>$1</strong>');
+    const tags = (item.theme || '') + (item.selected ? ' selected' : '');
+%>
+  <div class="pub" data-theme="<%= tags %>" data-year="<%= item.year %>">
+    <div class="bar"></div>
+    <div>
+      <div class="title"><%= item.title %><% if (item.selected) { %><span class="badge-sel">Selected</span><% } %></div>
+      <div class="authors"><%= authors %></div>
+      <div class="venue"><%= item.venue %></div>
+      <div class="links">
+        <% if (item.doi) { %><a href="https://doi.org/<%= item.doi %>">DOI</a><% } %>
+        <% if (item.arxiv) { %><a href="https://arxiv.org/abs/<%= item.arxiv %>">arXiv</a><% } %>
+        <% if (item.url) { %><a href="<%= item.url %>">Link</a><% } %>
+        <% if (item.pdf) { %><a href="papers/<%= item.pdf %>">PDF</a><% } %>
+      </div>
+<% if (item.summary) { %>
+      <details class="pub-more">
+        <summary>Summary</summary>
+        <div class="pub-body<%= item.figure ? ' has-fig' : '' %>">
+          <p><%= item.summary %></p>
+<% if (item.figure) { %>
+          <figure>
+            <a href="assets/img/papers/<%= item.figure %>" target="_blank" rel="noopener"><img src="assets/img/papers/<%= item.figure %>" loading="lazy" alt="<%= item.figcaption %>"></a>
+            <figcaption><%= item.figcaption %></figcaption>
+          </figure>
+<% } %>
+        </div>
+      </details>
+<% } %>
+    </div>
+  </div>
+<% } %>
+</div>
+<script>
+  document.querySelectorAll('.pub-filters button[data-filter]').forEach(btn => btn.addEventListener('click', () => {
+    document.querySelectorAll('.pub-filters button[data-filter]').forEach(b => b.classList.toggle('active', b === btn));
+    const f = btn.dataset.filter;
+    const shownYears = new Set();
+    document.querySelectorAll('#pub-list .pub').forEach(p => {
+      const show = f === 'all' || p.dataset.theme.split(' ').includes(f);
+      p.style.display = show ? '' : 'none';
+      if (show) shownYears.add(p.dataset.year);
+    });
+    document.querySelectorAll('#pub-list .pub-year').forEach(y => {
+      y.style.display = shownYears.has(y.dataset.year) ? '' : 'none';
+    });
+  }));
+  const toggle = document.querySelector('.toggle-summaries');
+  toggle.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-pressed') !== 'true';
+    document.querySelectorAll('#pub-list details.pub-more').forEach(d => { d.open = open; });
+    toggle.setAttribute('aria-pressed', open);
+    toggle.textContent = open ? 'Hide all summaries' : 'Show all summaries';
+  });
+</script>
+```

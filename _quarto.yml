@@ -1,0 +1,61 @@
+project:
+  type: website
+  output-dir: _site
+  resources:
+    - assets/
+    # Only list PDFs that may be redistributed (open access / CC BY); papers/ also holds
+    # publisher PDFs used as sources, which must not be published.
+    - papers/Sanghavi_amt-2015.pdf
+    - papers/Sanghavi2012AMT.pdf
+    - papers/Sanghavi_2026_arXiv_2608.06649.pdf
+    - papers/Jeyaram_2022_JOSS.pdf
+    - papers/Sanghavi_2026_JQSRT_Cabannes.pdf
+  render:
+    - "*.qmd"
+    - "!README.md"
+
+website:
+  title: "Suniti Sanghavi"
+  description: "Polarized radiative transfer from Earth's atmosphere to exoplanets and brown dwarfs."
+  site-url: "https://sunitisanghavi.github.io"
+  google-analytics: "G-MCMFLCHNLX"
+  favicon: assets/img/favicon.svg
+  open-graph: true
+  page-navigation: false
+  navbar:
+    title: "Suniti Sanghavi"
+    logo: assets/img/favicon.svg
+    right:
+      - text: Research
+        href: research.qmd
+      - text: Publications
+        href: publications.qmd
+      - text: Software
+        href: software.qmd
+      - text: CV
+        href: cv.qmd
+      - icon: github
+        href: https://github.com/RemoteSensingTools/vSmartMOM.jl
+        aria-label: GitHub
+      - icon: mortarboard-fill
+        href: https://scholar.google.com/citations?user=fKACl6kAAAAJ
+        aria-label: Google Scholar
+  page-footer:
+    left: "© 2026 Suniti Sanghavi"
+    right: "Built with [Quarto](https://quarto.org)"
+
+format:
+  html:
+    theme:
+      light: [cosmo, styles/theme.scss]
+    css: styles/site.css
+    toc: false
+    title-block-banner: "#0b1626"
+    title-block-banner-color: "#ffffff"
+    smooth-scroll: true
+    link-external-newwindow: true
+    include-in-header:
+      text: |
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
